@@ -29,17 +29,25 @@
                     <p>Looking for our story...</p>
                 </div>
 
+                <!-- Manual upload section removed as per request to use _chat.txt directly -->
+                <!-- 
                 <div class="upload-box hidden" id="manual-upload">
                     <label for="chat-file" class="upload-btn">
                         Upload WhatsApp Chat (.txt)
                     </label>
                     <input type="file" id="chat-file" accept=".txt">
                     <p class="small-text">Could not auto-load '_chat.txt'. Please upload manually.</p>
-                </div>
+                </div> 
+                -->
                 
                 <div id="loading" class="hidden">
                     <div class="spinner"></div>
                     <p>Analyzing our moments...</p>
+                </div>
+                
+                <div id="error-message" class="hidden" style="color: #ffb7b2; margin-top: 20px;">
+                    <p>Could not load the story file (_chat.txt).</p>
+                    <p style="font-size: 0.8em; opacity: 0.8;">If you are running this locally, you may need a web server (like VS Code Live Server) or upload to GitHub Pages.</p>
                 </div>
             </div>
         </section>

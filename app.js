@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('next-btn');
     const progressBar = document.getElementById('progress-bar');
     const initialLoading = document.getElementById('initial-loading');
-    const manualUpload = document.getElementById('manual-upload');
+    // Manual upload removed
+    // const manualUpload = document.getElementById('manual-upload');
+    const errorMessage = document.getElementById('error-message');
 
     // === AUTO LOAD CHECK ===
     // Attempt to fetch '_chat.txt' automatically
@@ -64,15 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500); // Small delay for visual flow
         })
         .catch(err => {
-            // Fail - Show upload
-            console.log("Auto-load failed (likely CORS or file missing), falling back to upload.", err);
+            // Fail - Show error
+            console.log("Auto-load failed.", err);
             initialLoading.classList.add('hidden');
-            manualUpload.classList.remove('hidden');
+            if(errorMessage) errorMessage.classList.remove('hidden');
+            // manualUpload.classList.remove('hidden');
         });
 
 
     // === EVENT LISTENERS ===
-    fileInput.addEventListener('change', handleFileUpload);
+    if(fileInput) fileInput.addEventListener('change', handleFileUpload);
     prevBtn.addEventListener('click', () => navigateSlide(-1));
     nextBtn.addEventListener('click', () => navigateSlide(1));
 
