@@ -88,21 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === MUSIC CONTROLS ===
     const bgMusic = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
 
     if (bgMusic) {
-        // set initial volume from slider or default
-        try {
-            bgMusic.volume = volumeSlider ? parseFloat(volumeSlider.value) : 0.1;
-        } catch (e) { bgMusic.volume = 0.1; }
+        // default volume (no UI slider available) — users adjust via device/system
+        try { bgMusic.volume = 0.1; } catch (e) { bgMusic.volume = 0.1; }
         state.audio = bgMusic;
-    }
-
-    if (volumeSlider && bgMusic) {
-        volumeSlider.addEventListener('input', (e) => {
-            const v = parseFloat(e.target.value);
-            bgMusic.volume = isNaN(v) ? 0.1 : v;
-        });
     }
 
     // Try to start playback on first user interaction (browsers require interaction)

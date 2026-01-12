@@ -340,14 +340,7 @@ input[type="file"] { display: none; }
     color: var(--text-muted);
 }
 
-#volume-slider {
-    width: 220px;
-    accent-color: var(--primary-pink);
-}
-
-@media (max-width: 480px) {
-    #volume-slider { width: 120px; }
-}
+/* volume slider removed — device controls used instead */
 
 /* In-slide animations */
 .animate-up {
