@@ -93,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // default volume (no UI slider available) — users adjust via device/system
         try { bgMusic.volume = 0.1; } catch (e) { bgMusic.volume = 0.1; }
         state.audio = bgMusic;
+        // Try to play immediately (best-effort). Browsers may still block autoplay with sound.
+        try { bgMusic.play().catch(() => {}); } catch (e) { /* ignored */ }
     }
 
     // Try to start playback on first user interaction (browsers require interaction)

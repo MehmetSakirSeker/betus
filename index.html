@@ -240,19 +240,12 @@
     </div>
 
     <!-- Background Music & Controls -->
-    <audio id="bg-music" loop preload="auto">
+    <audio id="bg-music" loop preload="auto" autoplay playsinline>
         <source src="musics/kumralim.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Top horizontal music bar -->
-    <div id="music-controls" class="top-music-bar">
-        <div class="music-left">
-            <span id="music-title">kumralim.mp3</span>
-        </div>
-        <div class="music-right">
-            <!-- volume slider removed: device volume will be used -->
-        </div>
-    </div>
+    <!-- Background music (no visible controls) -->
+    <!-- UI removed so audio plays without any on-screen controls or text -->
 
     <!-- Configuration for Manual Data -->
     <script>

@@ -302,45 +302,7 @@ input[type="file"] { display: none; }
 /* --- Utilities --- */
 .hidden { display: none !important; }
 
-/* --- Top Music Bar --- */
-#music-controls.top-music-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 18px;
-    background: linear-gradient(180deg, rgba(26,11,18,0.9), rgba(26,11,18,0.6));
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    z-index: 60;
-    gap: 12px;
-}
-
-#music-controls .music-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-#music-controls .music-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.music-btn {
-    /* removed: button not used anymore */
-}
-
-#music-title {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-}
-
-/* volume slider removed — device controls used instead */
+/* music UI removed — no visible music controls */
 
 /* In-slide animations */
 .animate-up {
