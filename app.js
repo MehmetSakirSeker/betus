@@ -88,19 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === MUSIC CONTROLS ===
     const bgMusic = document.getElementById('bg-music');
-    const musicToggle = document.getElementById('music-toggle');
     const volumeSlider = document.getElementById('volume-slider');
-
-    function updateMusicButton() {
-        if (!musicToggle || !bgMusic) return;
-        if (bgMusic.paused) {
-            musicToggle.textContent = '▶️';
-            musicToggle.setAttribute('aria-label', 'Play music');
-        } else {
-            musicToggle.textContent = '⏸️';
-            musicToggle.setAttribute('aria-label', 'Pause music');
-        }
-    }
 
     if (bgMusic) {
         // set initial volume from slider or default
@@ -108,17 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bgMusic.volume = volumeSlider ? parseFloat(volumeSlider.value) : 0.1;
         } catch (e) { bgMusic.volume = 0.1; }
         state.audio = bgMusic;
-    }
-
-    if (musicToggle && bgMusic) {
-        musicToggle.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play().then(() => updateMusicButton()).catch(() => updateMusicButton());
-            } else {
-                bgMusic.pause();
-                updateMusicButton();
-            }
-        });
     }
 
     if (volumeSlider && bgMusic) {
@@ -132,9 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function tryAutoplay() {
         if (!bgMusic) return;
         if (bgMusic.paused) {
-            bgMusic.play().then(() => updateMusicButton()).catch(() => {});
-        } else {
-            updateMusicButton();
+            bgMusic.play().catch(() => {});
         }
         document.removeEventListener('click', tryAutoplay);
     }
