@@ -243,10 +243,16 @@
     <audio id="bg-music" loop>
         <source src="musics/kumralim.mp3" type="audio/mpeg">
     </audio>
-    
-    <div id="music-controls">
-        <button id="music-toggle" class="music-btn">🎵</button>
-        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.1" orient="vertical">
+
+    <!-- Top horizontal music bar -->
+    <div id="music-controls" class="top-music-bar">
+        <div class="music-left">
+            <button id="music-toggle" class="music-btn" aria-label="Play music">▶️</button>
+            <span id="music-title">kumralim.mp3</span>
+        </div>
+        <div class="music-right">
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.1">
+        </div>
     </div>
 
     <!-- Configuration for Manual Data -->
