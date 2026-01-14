@@ -51,31 +51,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.getElementById('error-message');
 
     // === AUTO LOAD CHECK ===
-    // Attempt to fetch '_chat.txt' automatically
-    fetch('_chat.txt')
-        .then(response => {
-            if (!response.ok) throw new Error("File not found");
-            return response.text();
-        })
-        .then(text => {
-            // Success - Process immediately
-            initialLoading.querySelector('p').textContent = "Found our story! Analyzing...";
-            setTimeout(() => {
-                processChatData(text);
-                initializeSlides();
-            }, 500); // Small delay for visual flow
-        })
-        .catch(err => {
-            // Fail - Show error
-            console.log("Auto-load failed.", err);
-            initialLoading.classList.add('hidden');
-            if(errorMessage) errorMessage.classList.remove('hidden');
-            // manualUpload.classList.remove('hidden');
-        });
+    // For privacy we no longer auto-scan any chat file. Use hardcoded values instead.
+    // Populate `state.data` with the provided static values and initialize slides.
+    if (initialLoading) initialLoading.querySelector('p').textContent = "Yükleniyor...";
+    setTimeout(() => {
+        // Hardcoded data (privacy-safe)
+        state.data.totalMessages = 149673;
+        state.data.startDate = parseDate('25.11.2024');
+        state.data.daysTogether = 416; // as provided
+        state.data.mostActiveDay = { date: '23.02.2025', count: 1374 };
+        state.data.mostUsedWord = 'biraz';
+        state.data.mostUsedEmoji = '😘'; // öpücük atan emoji
+        // Ensure love cloud includes the desired love word
+        state.data.loveWords = {
+            'aşkım': 320,
+            'canım': 150,
+            'sevgilim': 80,
+            'tatlım': 60,
+            'velinimetim': 45,
+            'güzelim': 40,
+            'balım': 30,
+            'bitanem': 25,
+            'prensesim': 20,
+            'biraz': 20,
+            'beyim': 18,
+            'evimin direği': 12,
+            'elianın babası': 6,
+            'aşk': 300
+        };
+        // Time of day: night is dominant
+        state.data.timeOfDay = { morning: 5, afternoon: 10, evening: 20, night: 100 };
+        // Call hours
+        state.data.callHours = 145;
+
+        // Hide initial loader and start UI
+        if (initialLoading) initialLoading.classList.add('hidden');
+        if (errorMessage) errorMessage.classList.add('hidden');
+        initializeSlides();
+    }, 400);
 
 
     // === EVENT LISTENERS ===
-    if(fileInput) fileInput.addEventListener('change', handleFileUpload);
+    // Manual file upload disabled for privacy — using hardcoded data instead
+    // if(fileInput) fileInput.addEventListener('change', handleFileUpload);
     prevBtn.addEventListener('click', () => navigateSlide(-1));
     nextBtn.addEventListener('click', () => navigateSlide(1));
 
