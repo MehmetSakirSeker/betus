@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'balım': 30,
             'bitanem': 25,
             'prensesim': 20,
-            'biraz': 20,
             'beyim': 18,
             'evimin direği': 12,
             'elianın babası': 6,
